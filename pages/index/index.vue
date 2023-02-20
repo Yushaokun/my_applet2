@@ -1,6 +1,6 @@
 <template>
 	<view class="bg">
-		<image src="../../static/6.png" mode="scaleToFill" class="bg-img"></image>
+		<image src="../../static/6.jpg" mode="scaleToFill" class="bg-img"></image>
 <!-- 		<view class="advertising">
 			<ad unit-id="adunit-94ed6bcc5bb80d7f"></ad>
 		</view> -->

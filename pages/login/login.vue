@@ -2,21 +2,27 @@
 	<view class="bg">
 		<image src="../../static/wx_index.jpg" mode="aspectFill" class="bg-img"></image>
 		<view class="tips">
-			友情提示：基于OpenAI Davinci003模型
+			Tips：基于OpenAI Davinci003模型的对话机器人
 		</view>
-		<button @click="toChat">开始聊天</button>
-		<button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
+		<button @click="startChat">开始聊天</button>
+		<!-- <button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
 			选择头像
-		        </button>
-		<button @click="showQrcode">联系我们</button>
+		</button> -->
+		
+		<!-- 用户登录 -->
+<!-- 		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">用户登录</button> -->		
+		<button open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true">用户登录</button>
+ 
+		<button @click="showQrcode">问题反馈</button>
 		<uni-popup ref="popup" type="center">
 			<view class="qr-code">
-				<image src="../../static/QRcode.jpg" mode="aspectFit"></image>
+				<image src="../../static/business_card.png" mode="aspectFit"></image>
 			</view>
 		</uni-popup>
-		<view class="advertising">
-			<ad unit-id="adunit-ff48d59f501d5294"></ad>
-		</view>
+		<!-- 此处插入广告 -->
+		<!-- <view class="advertising">
+			<ad unit-id="">xxx</ad>
+		</view> -->
 	</view>
 </template>
 
@@ -24,50 +30,92 @@
 	export default {
 		data() {
 			return {
-				avatarUrl:'',
+				avatarUrl: '',
 			}
 		},
 		onLoad() {
 			wx.showShareMenu({
-			        withShareTicket:true,
-			        //设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
-			        menus:["shareAppMessage","shareTimeline"]
-			    })
+				withShareTicket: true,
+				//设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
+				menus: ["shareAppMessage", "shareTimeline"]
+			});
+			// 	this.userAuthorized();
 		},
 		methods: {
-			showQrcode(){
-				this.$refs.popup.open('center')
+			showQrcode() {
+				this.$refs.popup.open('center');
 			},
 			onChooseAvatar(e) {
-				uni.setStorageSync('user-avatar',e.detail.avatarUrl);
-				setTimeout(()=>{
-						uni.navigateTo({
-							url:'/pages/index/index'
-						})
-				},300)
-				
+				uni.setStorageSync('user-avatar', e.detail.avatarUrl);
+				setTimeout(() => {
+					uni.navigateTo({
+						url: '/pages/index/index'
+					})
+				}, 300);
+	
 			},
-			toChat(){
+			startChat() {
 				uni.navigateTo({
-					url:'/pages/index/index'
-				})
-			},
-			getUserInfo(){
-				uni.getUserProfile({
-					desc: '用于您的页面展示用户头像与昵称',
-					lang: 'zh_CN',
-					success: res => {
-					    console.log(res);
-						uni.setStorageSync('userInfo',res.userInfo)
-						
-					},
-					fail: err => {
-						console.log(err.errMsg);
-					}
+					url: '/pages/index/index'
 				});
+			},
+			getUserInfo() {
+				// uni.getUserProfile({
+				// 	desc: '用于展示您的头像与微信昵称',
+				// 	lang: 'zh_CN',
+				// 	success: res => {
+				// 	    console.log(res);
+				// 		uni.setStorageSync('userInfo',res.userInfo);
+				// 	},
+				// 	fail: err => {
+				// 		console.log(err.errMsg);
+				// 	}
+				// });
+				// var _this = this;
+				wx.showModal({
+						title: '授权用于展示您的头像与微信昵称',
+						content: '请点击按钮同意授权',
+						success(res) {
+							console.log(res)
+							//如果用户点击了确定按钮
+							if (res.confirm) {
+								wx.getUserProfile({
+									desc: '获取你的昵称、头像、地区及性别',
+									success: res => {
+										// _this.setData({
+										// 	userInfo: res.userInfo,
+										// 	hasUserInfo: true
+										// })
+										// 将获取的用户信息缓存到本地
+										console.log(res);
+										uni.setStorageSync('userInfo',res.userInfo);
+										uni.setStorageSync('hasUserInfo',true);
+									},
+									fail: res => {
+										console.log(res)
+										//拒绝授权
+										wx.showToast({
+											title: '您拒绝了请求,授权失败',
+											icon: 'error',
+											duration: 2000
+										});
+										return;
+									}
+								});
+							} else if (res.cancel) {
+								//如果用户点击了取消按钮
+								wx.showToast({
+									title: '您拒绝了请求,授权失败',
+									icon: 'error',
+									duration: 2000
+								});
+								return;
+							}
+						}
+					})
+				}
 			}
 		}
-	}
 </script>
 
 <style lang="scss" scoped>
