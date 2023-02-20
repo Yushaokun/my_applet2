@@ -1,9 +1,9 @@
 <template>
 	<view class="bg">
-		<image src="../../static/6.png" mode="scaleToFill" class="bg-img"></image>
-		<!-- <view class="tips">
-			友情提示：AI机器人的所有知识截止到2021年。
-		</view> -->
+		<image src="../../static/wx_index.jpg" mode="aspectFill" class="bg-img"></image>
+		<view class="tips">
+			友情提示：基于OpenAI Davinci003模型
+		</view>
 		<button @click="toChat">开始聊天</button>
 		<button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
 			选择头像
