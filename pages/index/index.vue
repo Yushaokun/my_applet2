@@ -224,7 +224,9 @@
 				})
 				uni.request({
 					// url: this.apiurl + '/message',
-					url: 'http://43.154.57.64:8880/chatGPT/query_gpt/',
+					// url: 'http://43.154.57.64:8880/chatGPT/query_gpt/',
+					// url: 'https://www.ysk.world/chatGPT/query_gpt/',
+					url: 'https://www.ncky2020.top/chatGPT/query_gpt/',
 					data: data,
 					method: 'POST',
 					success: (res) => {
