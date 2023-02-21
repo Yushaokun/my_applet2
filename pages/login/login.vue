@@ -1,22 +1,27 @@
 <template>
 	<view class="bg">
-		<image src="../../static/wx_index.jpg" mode="aspectFill" class="bg-img"></image>
+		<!-- <image src="../../static/wx_index.jpg" mode="aspectFill" class="bg-img"></image> -->
+		<image src="https://www.ncky2020.top/static/wx_index.jpg" mode="aspectFill" class="bg-img"></image>
 		<view class="tips">
 			Tips：基于OpenAI Davinci003模型的对话机器人
 		</view>
-		<button @click="startChat">开始聊天</button>
+		
+		<!-- <button class="cu-btn bg-grey lg">圆角按钮</button> -->
+		
+		<button @click="startChat" class="cu-btn bg-grey lg">开始聊天</button>
 		<!-- <button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
 			选择头像
 		</button> -->
 		
 		<!-- 用户登录 -->
 <!-- 		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">用户登录</button> -->		
-		<button open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true">用户登录</button>
+		<button open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true" class="cu-btn bg-grey lg">用户登录</button>
  
-		<button @click="showQrcode">问题反馈</button>
+		<button @click="showQrcode" class="cu-btn bg-grey lg">反馈问题</button>
 		<uni-popup ref="popup" type="center">
 			<view class="qr-code">
-				<image src="../../static/business_card.png" mode="aspectFit"></image>
+				<!-- <image src="../../static/business_card.png" mode="aspectFit"></image> -->
+				<image src="https://www.ncky2020.top/static/business_card.png" mode="aspectFit"></image>
 			</view>
 		</uni-popup>
 		<!-- 此处插入广告 -->
@@ -130,15 +135,31 @@
 			position: fixed;
 			bottom: 0;
 		}
+		
 		button{
-			margin-bottom: 30rpx;
-			width: 250rpx;
-			height: 100rpx;
-			border-radius: 10rpx;
-			background: linear-gradient(to right,#008FFF,#29C8FC);
-			color: #FFF;
-			line-height: 100rpx;
+			margin-bottom: 60rpx;
+			// width: 250rpx;
+			// height: 100rpx;
+			// border-radius: 10rpx;
+			// background: linear-gradient(to right,#008FFF,#29C8FC);
+			// color: #000000;
+			// line-height: 100rpx;
 		}
+		
+		// .btn_fillet {
+		// 		width: 250rpx;
+		// 		height: 75rpx;
+		// 		display: flex;
+		// 		justify-content: center;
+		// 		border-radius: 25px;
+		// 		background: #000000;
+		// 	}
+			
+		// .bg-click{
+		// 	top: 3upx;
+		// 	background-color: #a7a9ff;
+		// }
+		
 		.bg-img{
 			position: fixed;
 			width: 100%;

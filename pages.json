@@ -4,25 +4,26 @@
 	    "path" : "pages/login/login",
 	    "style" :                                                                                    
 	    {
-	        "navigationBarTitleText": "",
-	        "enablePullDownRefresh": false,
-			"navigationStyle": "custom"
+	        "navigationBarTitleText": "AI聊天管家",
+	        "enablePullDownRefresh": false
+			// "navigationStyle": "custom"
 	    }
 	    
 	},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
+	{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "AI聊天管家",		
+			"enablePullDownRefresh": false
+			// 自定义导航栏
+			// "navigationStyle": "custom"
 		}
-	    
+	}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#edf2f4",
 		"backgroundColor": "#F8F8F8"
 	},
 	"condition" : { //模式配置，仅开发期间生效

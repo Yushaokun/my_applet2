@@ -1,6 +1,6 @@
-<template>
+<template>	
 	<view class="bg">
-		<image src="../../static/6.jpg" mode="scaleToFill" class="bg-img"></image>
+		<image src="https://www.ncky2020.top/static/wx_bg.jpg" mode="scaleToFill" class="bg-img"></image>
 <!-- 		<view class="advertising">
 			<ad unit-id="adunit-94ed6bcc5bb80d7f"></ad>
 		</view> -->
@@ -17,7 +17,7 @@
 								<text style="word-break: break-all;">{{x.msg}}</text>
 							</view>
 							<view class="chat-img" style="margin-left:20rpx ;">
-								<image style="height: 100rpx;width: 100rpx;" :src="userAvatar" mode="aspectFit">
+								<image style="height: 100rpx;width: 100rpx;" :src="userInfo.avatarUrl" mode="aspectFit">
 								</image>
 							</view>
 						</view>
@@ -25,11 +25,11 @@
 					<!-- 机器人消息 -->
 					<view v-if="!x.my" class="aiinfo">
 						<view class="chat-img ">
-							<image style="height: 100rpx;width: 100rpx;" src="../../static/9.jpg" mode="scaleToFill">
+							<image style="height: 100rpx;width: 100rpx;" src="https://www.ncky2020.top/static/ai.jpg" mode="scaleToFill">
 							</image>
 						</view>
 						<view class="flex" style="max-width: 500rpx;">
-							<view class="aimsg" style="border-radius: 35rpx;background-color: #8ecae6;">
+							<view class="aimsg" style="border-radius: 40rpx;background-color: #8ecae6;">
 								<text style="word-break: break-all;">{{x.msg}}</text>
 							</view>
 						</view>
@@ -42,8 +42,7 @@
 		</scroll-view>
 		<!-- 底部导航栏 -->
 		<view class="flex-column-center">
-			<button class="btn" style="margin-bottom: 20rpx;width: auto;"
-				v-if="!apisucc">{{apibut}}</button>
+			<button class="btn" style="margin-bottom: 20rpx;width: auto;" v-if="!apisucc">{{apibut}}</button>
 			<view class="inpubut" v-else>
 				<input v-model="msg" class="dh-input" type="text" @confirm="sendMsg" confirm-type="search"
 					placeholder-class="my-neirong-sm" placeholder="请输入您的问题" @blur="isScroll=true;" @focus="isScroll=false;"/>
@@ -71,13 +70,13 @@
 		data() {
 			return {
 				rewardedVideoAd:null,//广告
-				num:1,//次数
+				num:99,//次数
 				scrollTop:9999,
 				isScroll:true,//是否可以滑动
-				userAvatar: '',//头像
+				userInfo: uni.getStorageSync('userInfo'),//头像
 				apiurl: '',
 				apisucc: true,
-				apibut: 'api检测中,请稍等...',
+				apibut: 'ai回答中,请稍等...',
 				// sentext: '发送',
 				// apiadj: '在此输入你的APIKEY',
 				api: '',

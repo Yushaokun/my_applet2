@@ -1,4 +1,4 @@
-# chatGPT-wx
+# AI聊天管家
 关于由openAI公司发布的大型预训练语言模型chatGPT接入微信小程序
 演示地址：
 
