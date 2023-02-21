@@ -1,17 +1,19 @@
 <template>
 	<view class="bg">
-		<!-- <image src="../../static/wx_index.jpg" mode="aspectFill" class="bg-img"></image> -->
 		<image src="https://www.ncky2020.top/static/wx_index.jpg" mode="aspectFill" class="bg-img"></image>
 		<view class="tips">
 			Tips：基于OpenAI Davinci003模型的对话机器人
 		</view>
 		
-		<!-- <button class="cu-btn bg-grey lg">圆角按钮</button> -->
 		
 		<button @click="startChat" class="cu-btn bg-grey lg">开始聊天</button>
 		<!-- <button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
 			选择头像
 		</button> -->
+		
+		<!-- 绑定用户头像与昵称 -->
+		<button @click="bind_avatar" class="cu-btn bg-grey lg">绑定头像</button>
+		
 		
 		<!-- 用户登录 -->
 <!-- 		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">用户登录</button> -->		
@@ -62,6 +64,11 @@
 			startChat() {
 				uni.navigateTo({
 					url: '/pages/index/index'
+				});
+			},
+			bind_avatar() {
+				uni.navigateTo({
+					url: '/pages/bind_avatar/bind_avatar'
 				});
 			},
 			getUserInfo() {

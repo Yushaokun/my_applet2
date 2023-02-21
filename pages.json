@@ -18,6 +18,15 @@
 			// 自定义导航栏
 			// "navigationStyle": "custom"
 		}
+	},
+	{
+		"path": "pages/bind_avatar/bind_avatar",
+		"style": {
+			"navigationBarTitleText": "AI聊天管家",		
+			"enablePullDownRefresh": false
+			// 自定义导航栏
+			// "navigationStyle": "custom"
+		}
 	}
     ],
 	"globalStyle": {
