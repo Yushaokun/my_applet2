@@ -1,6 +1,6 @@
 <template>
 	<view data-weui-theme="theme">
-	  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+	  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="bindchooseavatar">
 	    <image class="avatar" :src="avatarUrl"></image>
 	  </button> 
 	  <mp-form>
@@ -17,7 +17,8 @@
 	export default {
 		data() {
 			return {
-				avatarUrl: "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0",
+				// avatarUrl: "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0",
+				avatarUrl: "",
 				theme: wx.getSystemInfoSync().theme,
 			}
 		},
@@ -32,11 +33,15 @@
 		},
 		
 		methods: {
-			onChooseAvatar(e) {
-				const { avatarUrl } = e.detail 
-				this.setData({
-					avatarUrl,
-				})
+			bindchooseavatar(e) {
+				// const { avatarUrl } = e.detail 
+				// this.setData({
+				// 	avatarUrl,
+				// })
+				
+				this.avatarUrl = e.detail;
+				console.log("avatarUrl",e.detail.avatarUrl)
+				
 				// const { avatarUrl } = e.detail;
 				// uni.setStorageSync('user-avatar', e.detail);
 			}
